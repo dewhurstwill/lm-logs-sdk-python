@@ -1,4 +1,4 @@
-# lm-logs-sdk-python (beta)
+# [unofficial] lm-logs-sdk-python (beta)
 Python SDK for sending logs to LogicMonitor
 
 `pip install lm-logs-sdk-node` - if published
