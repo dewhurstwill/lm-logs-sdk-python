@@ -13,16 +13,16 @@ ACCESS_KEY = os.environ['ACCESS_KEY']
 COMPANY_NAME = os.environ['COMPANY_NAME']
 
 def ingest(events):
-    httpVerb = 'POST'
-    resourcePath = '/log/ingest'
+    http_verb = 'POST'
+    resource_path = '/log/ingest'
     data = json.dumps(events)
 
-    url = 'https://' + COMPANY_NAME + '.logicmonitor.com/rest' + resourcePath
+    url = 'https://' + COMPANY_NAME + '.logicmonitor.com/rest' + resource_path
     epoch = str(int(time.time() * 1000))
-    requestVars = httpVerb + epoch + data + resourcePath
+    request_vars = http_verb + epoch + data + resource_path
 
-    hmacHex = hmac.new(ACCESS_KEY.encode(),msg=requestVars.encode(),digestmod=hashlib.sha256).hexdigest()
-    signature = base64.b64encode(hmacHex.encode())
+    hmac_hex = hmac.new(ACCESS_KEY.encode(),msg=request_vars.encode(),digestmod=hashlib.sha256).hexdigest()
+    signature = base64.b64encode(hmac_hex.encode())
 
     auth = 'LMv1 ' + ACCESS_ID + ':' + signature.decode() + ':' + epoch
     headers = {'Content-Type': 'application/json', 'Authorization': auth}
