@@ -24,6 +24,6 @@ ingest([{
     "_lm.resourceId": {
         "<lm_property>": "<lm_property_value>"
     }
-}]);
+}])
 
 ```
